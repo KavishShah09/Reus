@@ -5,6 +5,6 @@ A food wastage and management web app that tracks inventory and notifies the use
 </p>
 <p align="center">
  <video width="600" height="400" controls>
-  <source src="./Reus_Demo.mov" type="video/mp4">
+  <source src="./reus_demo_compressed.mp4" type="video/mp4">
 </video>
 </p>
