@@ -92,19 +92,16 @@ function ShoppingList() {
   };
 
   useEffect(() => {
-    if (!groceries.length > 0) {
-      getGroceries();
-    }
+    getGroceries();
   }, [groceries]);
 
   return (
     <div className="dashboardPage">
-      <p className="intro"><b>Your Grocery List </b></p>
+      <p className="intro">
+        <b>Your Grocery List </b>
+      </p>
       <>
-        <button
-          className="buttn"
-          onClick={() => setModalShow(true)}
-        >
+        <button className="buttn" onClick={() => setModalShow(true)}>
           Add Item
         </button>
 
@@ -116,50 +113,54 @@ function ShoppingList() {
           onHide={() => setModalShow(false)}
         />
       </>
-      
-      <Table striped hover >
-        <thead className='shopThead'>
+
+      <Table striped hover>
+        <thead className="shopThead">
           <tr>
-            <th className='itemName2'> Item </th>
-            <th className='itemQty2'>Quantity</th>
-            <th className='itemRemove2'>Remove</th>
+            <th className="itemName2"> Item </th>
+            <th className="itemQty2">Quantity</th>
+            <th className="itemRemove2">Remove</th>
           </tr>
-          </thead>
-          <tbody className='shopTbody'>
+        </thead>
+        <tbody className="shopTbody">
           {items.map((item) => (
-           <tr>
-              <td className='itemName1' ><h3 >{item.name}</h3></td>
-              <td ><p className='itemQty1'>
-                <QuantityPicker
-                  min={1}
-                  value={item.quantity}
-                  onChange={(value) => {
-                    dispatch(
-                      updateGroceryItemQuantityAction({
-                        _id: item._id,
-                        quantity: value
-                      })
-                    );
-                  }}
-                  smooth
-                  width="8rem"
-                />
+            <tr>
+              <td className="itemName1">
+                <h3>{item.name}</h3>
+              </td>
+              <td>
+                <p className="itemQty1">
+                  <QuantityPicker
+                    min={1}
+                    value={item.quantity}
+                    onChange={(value) => {
+                      dispatch(
+                        updateGroceryItemQuantityAction({
+                          _id: item._id,
+                          quantity: value
+                        })
+                      );
+                    }}
+                    smooth
+                    width="8rem"
+                  />
                 </p>
               </td>
-              
-              <td className='itemRemove1' ><button
-                onClick={() => {
-                  deleteGrocery(item._id);
-                }}
-                type="button"
-                className="bin col"
-              >
-                <FaTrash />
-              </button></td>
-              </tr>
+
+              <td className="itemRemove1">
+                <button
+                  onClick={() => {
+                    deleteGrocery(item._id);
+                  }}
+                  type="button"
+                  className="bin col"
+                >
+                  <FaTrash />
+                </button>
+              </td>
+            </tr>
           ))}
-          </tbody>
-        
+        </tbody>
       </Table>
     </div>
   );
